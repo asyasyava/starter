@@ -1,0 +1,90 @@
+.popular {
+    width: 90%;
+    max-width: 1444px;
+    margin: 30px auto;
+
+    h2 {
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+}
+
+.cities {
+    display: flex;
+    gap: 15px;
+
+    .card {
+        display: flex;
+        background-color: rgb(236, 236, 236);
+        border-radius: 10px;
+        box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.2);
+        flex: 1;
+
+        .photo {
+            width: 100px;
+            padding: 15px;
+            }
+
+        .infocard {
+            display: flex;
+            flex-direction: column;
+            padding: 15px 0px;
+            
+            .type {
+                font-size: 0.8rem;
+            }
+
+            .values {
+                display: flex;
+                margin-top: 10px;
+
+                .bi-thermometer-half {
+                    color: peru;
+                }
+
+                .bi-droplet-half {
+                    color: peru;
+                }
+            }
+
+            .temphumi {
+                color: peru;
+                font-weight: 400;
+                margin-right: 15px;
+            }
+        }
+    }
+}
+
+.mycity {
+    background-color: rgb(236, 236, 236);
+    max-width: 1444px;
+
+    h2 {
+        font-size: 2rem;
+        padding: 30px 0px;
+        text-align: center;
+    }
+
+    .myweather {
+        display: flex;
+        justify-content: space-around;
+        padding-bottom: 30px;
+
+        div {
+            text-align: center;
+
+            i {
+                font-size: 2rem;
+            }
+    
+            h4 {
+                margin: 5px auto;
+                font-size: 2rem;
+                font-weight: 400;
+                color: darkorange;
+            }
+        }
+    }
+
+}

@@ -53,6 +53,7 @@ body {
     background-color: black;
     z-index: 5;
     transition: 2s;
+    text-align: center;
   }
 }
 
@@ -79,7 +80,6 @@ body {
 }
 
 main {
-  min-height: 100vh;
   background-image: url("../images/BG Image.png");
   position: relative;
   z-index: -1;
@@ -114,8 +114,8 @@ main > div {
   border-radius: 20px;
   border: 0;
 }
-.info .explore:hover {
-  background-color: transparent;
+.info .explore:active {
+  background-color: transparent !important;
   color: white;
   border: 2px solid white;
   font-size: 1rem;
@@ -160,7 +160,7 @@ main > div {
 }
 
 .wave {
-  position: fixed;
+  position: absolute;
   bottom: 0;
 }
 
@@ -170,9 +170,9 @@ main > div {
   left: 0;
   width: 50px;
   height: 50px;
+  z-index: 2;
   background-color: black;
   border-top-right-radius: 90%;
-  z-index: 3;
 }
 .clock .bi-clock {
   color: white;
@@ -187,10 +187,9 @@ main > div {
   bottom: 0;
   width: 250px;
   height: 150px;
-  background-color: black;
+  background-color: rgb(41, 41, 41);
   display: flex;
   flex-direction: column;
-  z-index: 2;
 }
 .datetime div {
   margin: auto auto;
@@ -206,4 +205,88 @@ main > div {
 
 .showdatetime {
   left: 0;
+}
+
+.explore:hover {
+  background-color: transparent !important;
+  color: white;
+  border: 2px solid white;
+  font-size: 1rem;
+  transition: 0.5s;
+}
+
+.popular {
+  width: 90%;
+  max-width: 1444px;
+  margin: 30px auto;
+}
+.popular h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.cities {
+  display: flex;
+  gap: 15px;
+}
+.cities .card {
+  display: flex;
+  background-color: rgb(236, 236, 236);
+  border-radius: 10px;
+  box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.2);
+  flex: 1;
+}
+.cities .card .photo {
+  width: 100px;
+  padding: 15px;
+}
+.cities .card .infocard {
+  display: flex;
+  flex-direction: column;
+  padding: 15px 0px;
+}
+.cities .card .infocard .type {
+  font-size: 0.8rem;
+}
+.cities .card .infocard .values {
+  display: flex;
+  margin-top: 10px;
+}
+.cities .card .infocard .values .bi-thermometer-half {
+  color: peru;
+}
+.cities .card .infocard .values .bi-droplet-half {
+  color: peru;
+}
+.cities .card .infocard .temphumi {
+  color: peru;
+  font-weight: 400;
+  margin-right: 15px;
+}
+
+.mycity {
+  background-color: rgb(236, 236, 236);
+  max-width: 1444px;
+}
+.mycity h2 {
+  font-size: 2rem;
+  padding: 30px 0px;
+  text-align: center;
+}
+.mycity .myweather {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 30px;
+}
+.mycity .myweather div {
+  text-align: center;
+}
+.mycity .myweather div i {
+  font-size: 2rem;
+}
+.mycity .myweather div h4 {
+  margin: 5px auto;
+  font-size: 2rem;
+  font-weight: 400;
+  color: darkorange;
 }/*# sourceMappingURL=main.css.map */

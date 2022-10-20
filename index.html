@@ -21,7 +21,7 @@
           <li type="none">About</li>
         </ul>
         <button class="hamb" id="Hamb">
-            <img src="./images/Hamburger.png" alt="">
+          <img src="./images/Hamburger.png" alt="" />
         </button>
       </div>
     </header>
@@ -29,35 +29,66 @@
     <main>
       <div>
         <div class="info">
-          <h1>Good morning, Dawid</h1>
+          <h1 id="Greeting"></h1>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit culpa accusamus. Maiores voluptatum veniam
-            voluptatibus adipisci, necessitatibus est ut debitis, animi
-            praesentium nesciunt reiciendis consequatur quas.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit culpa
+            accusamus. Maiores voluptatum veniam voluptatibus adipisci,
+            necessitatibus est ut debitis, animi praesentium nesciunt reiciendis
+            consequatur quas.
           </p>
           <button class="explore">Explore</button>
         </div>
         <div class="images">
-            <div class="im1">
-                <img src="./images/Widget 1.png" alt="" />
-            </div>
-            <div class="im2">
-                <img src="./images/Widget 2.png" alt="" />
-            </div>
+          <div class="im1">
+            <img src="./images/Widget 1.png" alt="" />
+          </div>
+          <div class="im2">
+            <img src="./images/Widget 2.png" alt="" />
+          </div>
         </div>
       </div>
-      <img class="wave" src="./images/wave.svg" alt="">
-      <button class="clock" id="Clock">
-        kkkkkkk
-        <i class="bi bi-clock"></i>
-      </button>
-      <div class="datetime" id="DateTime">
-        <div>
-          <p class="day">bfr</p>
-          <p class="time">r54465th</p>
-        </div>
-      </div>
+      <img class="wave" src="./images/wave.svg" alt="" />
     </main>
+
+    <button class="clock" id="Clock">
+      <i class="bi bi-clock"></i>
+    </button>
+    <div class="datetime" id="DateTime">
+      <div>
+        <p class="day"  id="Day">bfr</p>
+        <p class="time"  id="Time">r54465th</p>
+      </div>
+      <!-- <button id="Stop">STOP</button> -->
+    </div>
+
+    <footer>
+      <div class="popular">
+        <h2>Most Popular</h2>
+        <div id="Cities" class="cities"></div>
+      </div>
+      <div class="mycity">
+        <h2>Weather in Katowice</h2>
+        <article class="myweather">
+          <div>
+            <i class="bi bi-thermometer-sun"></i>
+            <h4>-97°C</h4>
+          </div>
+          <div>
+            <i class="bi bi-thermometer-snow"></i>
+            <h4>-121°C</h4>
+          </div>
+          <div>
+            <i class="bi bi-droplet-half"></i>
+            <h4>99%</h4>
+          </div>
+          <div>
+            <i class="bi bi-wind"></i>
+            <h4>564km/h</h4>
+          </div>
+        </article>
+      </div>
+    </footer>
+
     <script src="./script.js"></script>
   </body>
 </html>
