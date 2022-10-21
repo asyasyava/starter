@@ -12,8 +12,10 @@ body {
 .nav {
   position: fixed;
   width: 100%;
+  z-index: 100;
   border-bottom: 1px solid white;
   background-color: transparent;
+  transition: 1s;
 }
 
 .wrapper {
@@ -47,7 +49,7 @@ body {
   .menu {
     flex-direction: column;
     position: fixed;
-    left: -50%;
+    left: -100%;
     height: 100vh;
     width: 50vw;
     background-color: black;
@@ -79,10 +81,14 @@ body {
   left: 0;
 }
 
+.inverted {
+  background-color: #202020;
+}
+
 main {
   background-image: url("../images/BG Image.png");
+  background-size: cover;
   position: relative;
-  z-index: -1;
 }
 
 main > div {
@@ -111,14 +117,14 @@ main > div {
 .info .explore {
   width: 30%;
   padding: 10px 10px;
-  border-radius: 20px;
-  border: 0;
-}
-.info .explore:active {
-  background-color: transparent !important;
-  color: white;
   border: 2px solid white;
-  font-size: 1rem;
+  border-radius: 20px;
+  position: relative;
+  z-index: 2;
+}
+.info .explore:hover {
+  background-color: transparent;
+  color: white;
   transition: 0.5s;
 }
 @media (max-width: 992px) {
@@ -160,8 +166,8 @@ main > div {
 }
 
 .wave {
-  position: absolute;
   bottom: 0;
+  position: absolute;
 }
 
 .clock {
@@ -187,7 +193,7 @@ main > div {
   bottom: 0;
   width: 250px;
   height: 150px;
-  background-color: rgb(41, 41, 41);
+  background-color: #202020;
   display: flex;
   flex-direction: column;
 }
@@ -207,14 +213,6 @@ main > div {
   left: 0;
 }
 
-.explore:hover {
-  background-color: transparent !important;
-  color: white;
-  border: 2px solid white;
-  font-size: 1rem;
-  transition: 0.5s;
-}
-
 .popular {
   width: 90%;
   max-width: 1444px;
@@ -229,12 +227,22 @@ main > div {
   display: flex;
   gap: 15px;
 }
+@media (max-width: 992px) {
+  .cities {
+    flex-direction: column;
+  }
+}
 .cities .card {
   display: flex;
   background-color: rgb(236, 236, 236);
   border-radius: 10px;
+  border: 1px solid rgb(236, 236, 236);
   box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.2);
   flex: 1;
+}
+.cities .card:hover {
+  border: 1px solid peru;
+  background-color: white;
 }
 .cities .card .photo {
   width: 100px;
@@ -278,6 +286,11 @@ main > div {
   justify-content: space-around;
   padding-bottom: 30px;
 }
+@media (max-width: 992px) {
+  .mycity .myweather {
+    flex-direction: column;
+  }
+}
 .mycity .myweather div {
   text-align: center;
 }
@@ -289,4 +302,97 @@ main > div {
   font-size: 2rem;
   font-weight: 400;
   color: darkorange;
+}
+
+.ourhotels {
+  width: 90%;
+  margin: 30px auto;
+}
+.ourhotels h2 {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.hotels {
+  display: flex;
+  justify-content: space-around;
+}
+@media (max-width: 992px) {
+  .hotels {
+    flex-wrap: wrap;
+  }
+}
+.hotels .hotel {
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 20px;
+  border: 1px solid white;
+}
+.hotels .hotel:hover {
+  background-color: rgb(236, 236, 236);
+  border: 1px solid black;
+}
+.hotels .hotel img {
+  width: 230px;
+}
+.hotels .hotel .namestars {
+  display: flex;
+  justify-content: space-between;
+  width: 230px;
+  font-size: 1.2rem;
+}
+.hotels .hotel .namestars span {
+  display: flex;
+  padding: auto 0px;
+  align-items: center;
+}
+.hotels .hotel p {
+  font-size: 0.8rem;
+}
+.hotels .hotel .price {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+.hotels .hotel .price h5 {
+  font-size: 1.2rem;
+  margin-right: 5px;
+}
+.hotels .hotel .price .pernight {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.footer {
+  background-color: #202020;
+}
+.footer .infofooter {
+  padding: 80px 0px;
+  text-align: center;
+}
+.footer .infofooter .socnet {
+  margin-bottom: 50px;
+}
+.footer .infofooter .socnet .bi {
+  background-color: white;
+  padding: 10px 17px;
+  font-size: 30px;
+  border-radius: 50px;
+  margin: 30px 15px;
+}
+.footer .infofooter .socnet .bi:hover {
+  background-color: gray;
+  color: white;
+}
+.footer .infofooter ul {
+  color: white;
+  display: flex;
+  margin: 10px auto;
+  justify-content: center;
+}
+.footer .infofooter ul li {
+  margin: 0px 15px;
+}
+.footer .infofooter p {
+  color: grey;
 }/*# sourceMappingURL=main.css.map */

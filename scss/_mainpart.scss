@@ -1,7 +1,8 @@
 main {
     background-image: url("../images/BG\ Image.png");
+    background-size: cover;
     position: relative;
-    z-index: -1;
+    // z-index: -1;
 }
 
 main>div {
@@ -33,16 +34,18 @@ main>div {
     .explore {
         width: 30%;
         padding: 10px 10px;
+        border: 2px solid white;
         border-radius: 20px;
-        border: 0;
-        &:active {
-            background-color: transparent !important;
+        position: relative;
+        z-index: 2;
+
+        &:hover {
+            background-color: transparent;
             color: white;
-            border: 2px solid white;
-            font-size: 1rem;
             transition: 0.5s;
         }
     }
+
     @media (max-width: 992px) {
         width: 100%;
     }
@@ -81,8 +84,8 @@ main>div {
 }
 
 .wave {
-    position: absolute;
     bottom: 0;
+    position: absolute;
 }
 
 .clock {
@@ -109,7 +112,7 @@ main>div {
     bottom: 0;
     width: 250px;
     height: 150px;
-    background-color: rgb(41, 41, 41);
+    background-color: $light-dark;
     display: flex;
     flex-direction: column;
     div {
@@ -127,14 +130,5 @@ main>div {
 
 .showdatetime {
     left: 0;
-}
-
-
-.explore:hover {
-    background-color: transparent !important;
-    color: white;
-    border: 2px solid white;
-    font-size: 1rem;
-    transition: 0.5s;
 }
 

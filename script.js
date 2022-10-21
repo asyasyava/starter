@@ -129,6 +129,21 @@ function showTime () {
 var a
 a=setInterval(showTime, 1000)
 
+const header = document.getElementById("Header");
+const className = "inverted";
+const scrollTrigger = 450;
+
+function changeHeaderBG () {
+    if (window.scrollY >= scrollTrigger || window.pageYOffset >=scrollTrigger) {
+        header.classList.add(className);
+    }
+    else {
+        header.classList.remove (className);
+    }
+}
+
+window.addEventListener ("scroll", changeHeaderBG)
+
 // const stoptime = document.getElementById("Stop")
 
 // function myStopFunction() {
@@ -136,3 +151,16 @@ a=setInterval(showTime, 1000)
 //   }
 
 // stoptime.addEventListener("click", myStopFunction)
+
+
+// const admin = true;
+
+// if(admin === true) {
+//     console.log("aaa")
+// }
+// else {
+//     console.log("hhhh")
+// }
+
+// const result = admin === true ? "aaa" : "hhhh"
+// console.log(result)
