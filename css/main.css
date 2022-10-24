@@ -332,36 +332,6 @@ main > div {
   background-color: rgb(236, 236, 236);
   border: 1px solid black;
 }
-.hotels .hotel img {
-  width: 230px;
-}
-.hotels .hotel .namestars {
-  display: flex;
-  justify-content: space-between;
-  width: 230px;
-  font-size: 1.2rem;
-}
-.hotels .hotel .namestars span {
-  display: flex;
-  padding: auto 0px;
-  align-items: center;
-}
-.hotels .hotel p {
-  font-size: 0.8rem;
-}
-.hotels .hotel .price {
-  display: flex;
-  align-items: center;
-  margin-top: 5px;
-}
-.hotels .hotel .price h5 {
-  font-size: 1.2rem;
-  margin-right: 5px;
-}
-.hotels .hotel .price .pernight {
-  font-size: 1rem;
-  font-weight: 400;
-}
 
 .footer {
   background-color: #202020;
@@ -395,4 +365,45 @@ main > div {
 }
 .footer .infofooter p {
   color: grey;
+}
+
+.hotelimg {
+  width: 230px;
+}
+
+.hotelname {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.hotelrate {
+  font-size: 1rem;
+}
+
+.ratebox {
+  display: flex;
+  padding: auto 0px;
+  align-items: center;
+}
+
+.namebox {
+  display: flex;
+  justify-content: space-between;
+  width: 230px;
+}
+
+.pricebox {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.price {
+  font-size: 1.2rem;
+  margin-right: 5px;
+}
+
+.pernight {
+  font-size: 1rem;
+  font-weight: 400;
 }/*# sourceMappingURL=main.css.map */

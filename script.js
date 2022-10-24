@@ -76,17 +76,138 @@ function cardCreator (p, c, ty, te, hu) {
     cities.appendChild (card)
 }
 
-const w1 = {img_w: "./images/Widget 1.png", city_w: "Cairo", type_w: "sunny", temp_w: "34", humi_w: "32"}
-const w2 = {img_w: "./images/Widget 2.png", city_w: "Giza", type_w: "sunny", temp_w: "34", humi_w: "32"}
-const w3 = {img_w: "./images/Widget 3.png", city_w: "Hurghada", type_w: "sunny", temp_w: "34", humi_w: "32"}
-const w4 = {img_w: "./images/Widget 4.png", city_w: "Alexandria", type_w: "sunny", temp_w: "34", humi_w: "32"}
 
- const weather_cities = [w1, w2, w3, w4];
+
+const weather_cities = [
+    {
+        img_w: "./images/Widget 1.png", 
+        city_w: "Cairo", 
+        type_w: "sunny", 
+        temp_w: "34", 
+        humi_w: "32"
+    },
+    {
+        img_w: "./images/Widget 2.png", 
+        city_w: "Giza", 
+        type_w: "sunny", 
+        temp_w: "34", 
+        humi_w: "32"
+    },
+    {
+        img_w: "./images/Widget 3.png", 
+        city_w: "Hurghada", 
+        type_w: "sunny", 
+        temp_w: "34", 
+        humi_w: "32"
+    },
+    {
+        img_w: "./images/Widget 4.png", 
+        city_w: "Alexandria", 
+        type_w: "sunny", 
+        temp_w: "34", 
+        humi_w: "32"
+    }
+];
 
 for (let i = 0, len = weather_cities.length; i < len; i++) {
     cardCreator(weather_cities[i].img_w, weather_cities[i].city_w, weather_cities[i].type_w, weather_cities[i].temp_w, weather_cities[i].humi_w);
 }
 
+const hotels = [
+    {
+        img: "./images/Widget 1.png", 
+        name: "Hotel 1", 
+        city: "Giza", 
+        rate: "4", 
+        view: "Mountain View",
+        date: "30 oct-4 nov",
+        price: "519"
+    },
+    {
+        img: "./images/Widget 2.png", 
+        name: "Hotel 2", 
+        city: "Alexandria", 
+        rate: "3", 
+        view: "Mountain View",
+        date: "20 oct-7 nov",
+        price: "491"
+    },
+    {
+        img: "./images/Widget 3.png", 
+        name: "Hotel 3", 
+        city: "Cairo", 
+        rate: "4", 
+        view: "Mountain View",
+        date: "10 oct-27 oct",
+        price: "349"
+    },
+    {
+        img: "./images/Widget 4.png", 
+        name: "Hotel 4", 
+        city: "Hurghada", 
+        rate: "5", 
+        view: "Mountain View",
+        date: "17 oct-30 oct",
+        price: "649"
+    }
+];
+
+const hotelsWrapper = document.getElementById("Hotels")
+hotels.forEach( (hotel) => {
+    const card = document.createElement("article")
+    card.classList.add ("hotel")
+
+    const image = document.createElement("img")
+    image.classList.add ("hotelimg")
+    image.src = hotel.img
+
+    const namebox = document.createElement("div")
+    namebox.classList.add("namebox")
+
+    const name = document.createElement("h5")
+    namebox.classList.add ("hotelname")
+    namebox.textContent=`${hotel.name}, ${hotel.city}`;
+
+    const ratebox = document.createElement("div")
+    ratebox.classList.add("ratebox")
+
+    const rate = document.createElement ("h5")
+    const star = document.createElement ("i")
+    star.classList.add ("bi-star-fill")
+    rate.classList.add ("hotelrate")
+    rate.textContent= hotel.rate
+    ratebox.appendChild (star)
+    ratebox.appendChild (rate)
+    namebox.appendChild(ratebox)
+    
+    const view = document.createElement("p")
+    view.classList.add ("view")
+    view.textContent= hotel.view
+
+    const date = document.createElement("p")
+    date.classList.add ("date")
+    date.textContent= hotel.date
+
+    const pricebox = document.createElement("div")
+    pricebox.classList.add("pricebox")
+    const price = document.createElement ("h5")
+    price.classList.add ("price")
+    price.textContent="$"+hotel.price
+    const pernight = document.createElement ("p")
+    pernight.classList.add("pernight")
+    pernight.textContent="per night"
+    pricebox.appendChild(price)
+    pricebox.appendChild(pernight)
+
+
+    card.appendChild(image)
+    card.appendChild(name)
+    card.appendChild(namebox)
+    card.appendChild(view)
+    card.appendChild(date)
+    card.appendChild(pricebox)
+    hotelsWrapper.appendChild(card)
+})
 
 // cardCreator( "./images/Widget 1.png", "Cairo", "sunny", "34", "32")
 
@@ -143,6 +264,45 @@ function changeHeaderBG () {
 }
 
 window.addEventListener ("scroll", changeHeaderBG)
+
+
+let mycityname = document.getElementById("MyCityName")
+let myhumi = document.getElementById("MyHumi")
+let mymaxtemp = document.getElementById("MyMaxTemp")
+let mymintemp = document.getElementById("MyMinTemp")
+let mywindspeed = document.getElementById("MyWindSpeed")
+
+
+let APIKey = "f0cd2fd2af31f487dba865ee97b534e6";
+let my_city = "Katowice";
+
+const my_weather = async (lat,lon) => {
+    const my_cityURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIKey}`
+    const data = await fetch(my_cityURL);
+    const weather = await data.json();
+    console.log(weather)
+    showMyWeather(weather)
+}
+
+// .then(showMyWeather)
+
+function showMyWeather (weather) {
+    console.log(weather)
+    mycityname.textContent = "Weather in " + weather.name
+    mymaxtemp.textContent = `${Math.round(weather.main.temp_max - 273.15)}°C`
+    mymintemp.textContent = `${Math.round(weather.main.temp_min - 273.15)}°C`
+    myhumi.textContent = weather.main.humidity + "%"
+    mywindspeed.textContent = weather.wind.speed + " km/h"
+}
+
+navigator.geolocation.getCurrentPosition((position) => {
+    let lat = position.coords.latitude;
+    let lon = position.coords.longitude;
+    console.log(lat, lon)
+    my_weather(lat, lon)
+  });
+
+
 
 // const stoptime = document.getElementById("Stop")
 

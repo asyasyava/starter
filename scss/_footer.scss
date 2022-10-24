@@ -131,38 +131,38 @@
             border: 1px solid black;
         }
 
-        img {
-            width: 230px;
-        }
-        .namestars {
-            display: flex;
-            justify-content: space-between;
-            width: 230px;
-            font-size: 1.2rem;
-            span {
-                display: flex;
-                padding: auto 0px;
-                align-items: center;
-            }
-        }
+        // img {
+        //     width: 230px;
+        // }
+        // .namestars {
+        //     display: flex;
+        //     justify-content: space-between;
+        //     width: 230px;
+        //     font-size: 1.2rem;
+        //     span {
+        //         display: flex;
+        //         padding: auto 0px;
+        //         align-items: center;
+        //     }
+        // }
 
-        p {
-            font-size: 0.8rem;
-        }
+        // p {
+        //     font-size: 0.8rem;
+        // }
 
-        .price{
-            display: flex;
-            align-items: center;
-            margin-top: 5px;
-            h5 {
-                font-size: 1.2rem;
-                margin-right: 5px;
-            }
-            .pernight {
-                font-size: 1rem;
-                font-weight: 400;
-            }
-        }
+        // .price1{
+        //     display: flex;
+        //     align-items: center;
+        //     margin-top: 5px;
+        //     h5 {
+        //         font-size: 1.2rem;
+        //         margin-right: 5px;
+        //     }
+        //     .pernight1 {
+        //         font-size: 1rem;
+        //         font-weight: 400;
+        //     }
+        // }
     }
 
 }
@@ -203,4 +203,45 @@
         color: grey;
     }
    }
+}
+
+.hotelimg {
+        width: 230px;
+}
+
+.hotelname {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.hotelrate {
+    font-size: 1rem;
+}
+
+.ratebox {
+    display: flex;
+    padding: auto 0px;
+    align-items: center;
+}
+
+.namebox {
+    display: flex;
+    justify-content: space-between;
+    width: 230px;
+}
+
+.pricebox {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.price {
+    font-size: 1.2rem;
+    margin-right: 5px;
+}
+
+.pernight {
+    font-size: 1rem;
+    font-weight: 400;
 }
