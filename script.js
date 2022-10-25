@@ -14,6 +14,33 @@ function showMenu () {
 
 hamb.addEventListener ("click", showMenu)
 
+const home = document.getElementById("Home")
+home.onclick =() => {
+    window.scrollTo ({
+        top:0,
+        behavior: 'smooth'
+    })
+}
+
+const region = document.getElementById("Region")
+const popular = document.getElementById("Popular")
+region.onclick =() => {
+    window.scrollTo ({
+        top:popular.offsetTop-60,
+        behavior: 'smooth'
+    })
+}
+
+const about = document.getElementById("About")
+const ourhotels = document.getElementById("OurHotels")
+about.onclick =() => {
+    window.scrollTo ({
+        top: ourhotels.offsetTop-60,
+        behavior: 'smooth'
+    })
+}
+
+
 const clock = document.getElementById("Clock")
 const datetime = document.getElementById("DateTime")
 
@@ -26,96 +53,11 @@ function showDateTime () {
 
  clock.addEventListener ("click", showDateTime)
 
-const cities = document.getElementById("Cities")
 
-
-
-function cardCreator (p, c, ty, te, hu) {
-    const card = document.createElement ("article")
-    card.classList.add ("card")
-
-    const photo = document.createElement ("img")
-    photo.setAttribute("src", p)
-    photo.classList.add ("photo")
-    card.appendChild (photo)
-
-    const infocard = document.createElement ("div")
-    infocard.classList.add ("infocard")
-
-    const city = document.createElement ("h3")
-    city.classList.add ("city")
-    city.textContent = c
-    infocard.appendChild(city)
-
-    const type = document.createElement ("p")
-    type.classList.add ("type")
-    type.textContent = "Weather is " + ty
-    infocard.appendChild(type)
-
-    const values = document.createElement ("div")
-    values.classList.add ("values")
-
-    const temp = document.createElement ("h4")
-    const icon1 = document.createElement ("i")
-    icon1.classList.add ("bi-thermometer-half")
-    temp.classList.add ("temphumi")
-    temp.innerHTML= te + "°C"
-    values.appendChild (icon1)
-    values.appendChild (temp)
-
-    const humi = document.createElement ("h4")
-    const icon2 = document.createElement ("i")
-    icon2.classList.add ("bi-droplet-half")
-    humi.classList.add ("temphumi")
-    humi.textContent = hu + "%"
-    values.appendChild (icon2)
-    values.appendChild (humi)
-
-    infocard.appendChild (values)
-    card.appendChild (infocard)
-    cities.appendChild (card)
-}
-
-
-
-const weather_cities = [
-    {
-        img_w: "./images/Widget 1.png", 
-        city_w: "Cairo", 
-        type_w: "sunny", 
-        temp_w: "34", 
-        humi_w: "32"
-    },
-    {
-        img_w: "./images/Widget 2.png", 
-        city_w: "Giza", 
-        type_w: "sunny", 
-        temp_w: "34", 
-        humi_w: "32"
-    },
-    {
-        img_w: "./images/Widget 3.png", 
-        city_w: "Hurghada", 
-        type_w: "sunny", 
-        temp_w: "34", 
-        humi_w: "32"
-    },
-    {
-        img_w: "./images/Widget 4.png", 
-        city_w: "Alexandria", 
-        type_w: "sunny", 
-        temp_w: "34", 
-        humi_w: "32"
-    }
-];
-
-for (let i = 0, len = weather_cities.length; i < len; i++) {
-    cardCreator(weather_cities[i].img_w, weather_cities[i].city_w, weather_cities[i].type_w, weather_cities[i].temp_w, weather_cities[i].humi_w);
-}
 
 const hotels = [
     {
-        img: "./images/Widget 1.png", 
+        img: "./images/Cairo.png", 
         name: "Hotel 1", 
         city: "Giza", 
         rate: "4", 
@@ -124,7 +66,7 @@ const hotels = [
         price: "519"
     },
     {
-        img: "./images/Widget 2.png", 
+        img: "./images/Giza.png", 
         name: "Hotel 2", 
         city: "Alexandria", 
         rate: "3", 
@@ -133,7 +75,7 @@ const hotels = [
         price: "491"
     },
     {
-        img: "./images/Widget 3.png", 
+        img: "./images/Hurghada.png", 
         name: "Hotel 3", 
         city: "Cairo", 
         rate: "4", 
@@ -142,7 +84,7 @@ const hotels = [
         price: "349"
     },
     {
-        img: "./images/Widget 4.png", 
+        img: "./images/Alexandria.png", 
         name: "Hotel 4", 
         city: "Hurghada", 
         rate: "5", 
@@ -209,7 +151,7 @@ hotels.forEach( (hotel) => {
     hotelsWrapper.appendChild(card)
 })
 
-// cardCreator( "./images/Widget 1.png", "Cairo", "sunny", "34", "32")
+// cardCreator( "./images/Cairo.png", "Cairo", "sunny", "34", "32")
 
 const greeting = document.getElementById("Greeting")
 
@@ -280,14 +222,12 @@ const my_weather = async (lat,lon) => {
     const my_cityURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIKey}`
     const data = await fetch(my_cityURL);
     const weather = await data.json();
-    console.log(weather)
     showMyWeather(weather)
 }
 
 // .then(showMyWeather)
 
 function showMyWeather (weather) {
-    console.log(weather)
     mycityname.textContent = "Weather in " + weather.name
     mymaxtemp.textContent = `${Math.round(weather.main.temp_max - 273.15)}°C`
     mymintemp.textContent = `${Math.round(weather.main.temp_min - 273.15)}°C`
@@ -298,12 +238,113 @@ function showMyWeather (weather) {
 navigator.geolocation.getCurrentPosition((position) => {
     let lat = position.coords.latitude;
     let lon = position.coords.longitude;
-    console.log(lat, lon)
     my_weather(lat, lon)
   });
 
+const allWeather = async () => {
+    const URL = `http://api.openweathermap.org/data/2.5/group?id=360630,360995,361291,361058&units;=metric&appid=${APIKey}`
+    const weather = await(await fetch(URL)).json();
+    return([...weather.list])
+ }
+
+const getCitiesWeather = (cities)=> {
+    const citiesArray = [];
+    cities.forEach(city=>{
+        citiesArray.push ({
+            name: city.name,
+            desc: city.weather[0].description,
+            temp: city.main.temp,
+            humidity: city.main.humidity
+        })
+    })
+    citiesArray.forEach((city)=>cardCreator(city));
+}
+let citiesWeather = allWeather().then(getCitiesWeather);
+
+const cities = document.getElementById("Cities")
+
+function cardCreator (item) {
+    const card = document.createElement ("article")
+    card.classList.add ("card")
+
+    const photo = document.createElement ("img")
+    photo.setAttribute("src",  `./images/${item.name}.png`)
+    photo.classList.add ("photo")
+    card.appendChild (photo)
+
+    const infocard = document.createElement ("div")
+    infocard.classList.add ("infocard")
+
+    const city = document.createElement ("h3")
+    city.classList.add ("city")
+    city.textContent = item.name
+    infocard.appendChild(city)
+
+    const type = document.createElement ("p")
+    type.classList.add ("type")
+    type.textContent = "Weather is " + item.desc
+    infocard.appendChild(type)
+
+    const values = document.createElement ("div")
+    values.classList.add ("values")
+
+    const temp = document.createElement ("h4")
+    const icon1 = document.createElement ("i")
+    icon1.classList.add ("bi-thermometer-half")
+    temp.classList.add ("temphumi")
+    temp.innerHTML= `${Math.round(item.temp - 273.15)}°C`
+    values.appendChild (icon1)
+    values.appendChild (temp)
+
+    const humi = document.createElement ("h4")
+    const icon2 = document.createElement ("i")
+    icon2.classList.add ("bi-droplet-half")
+    humi.classList.add ("temphumi")
+    humi.textContent = item.humidity + "%"
+    values.appendChild (icon2)
+    values.appendChild (humi)
+
+    infocard.appendChild (values)
+    card.appendChild (infocard)
+    cities.appendChild (card)
+}
 
 
+
+// const weather_cities = [
+//     {
+//         img_w: "./images/Cairo.png", 
+//         city_w: "Cairo", 
+//         type_w: "sunny", 
+//         temp_w: "34", 
+//         humi_w: "32"
+//     },
+//     {
+//         img_w: "./images/Giza.png", 
+//         city_w: "Giza", 
+//         type_w: "sunny", 
+//         temp_w: "34", 
+//         humi_w: "32"
+//     },
+//     {
+//         img_w: "./images/Hurghada.png", 
+//         city_w: "Hurghada", 
+//         type_w: "sunny", 
+//         temp_w: "34", 
+//         humi_w: "32"
+//     },
+//     {
+//         img_w: "./images/Alexandria.png", 
+//         city_w: "Alexandria", 
+//         type_w: "sunny", 
+//         temp_w: "34", 
+//         humi_w: "32"
+//     }
+// ];
+
+// for (let i = 0, len = weather_cities.length; i < len; i++) {
+//     cardCreator(weather_cities[i].img_w, weather_cities[i].city_w, weather_cities[i].type_w, weather_cities[i].temp_w, weather_cities[i].humi_w);
+// }
 // const stoptime = document.getElementById("Stop")
 
 // function myStopFunction() {

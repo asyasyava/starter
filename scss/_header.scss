@@ -47,9 +47,13 @@
     }
 }
 
-.menu>li {
+.menu>button {
     color: white;
     margin: auto 25px;
+    background-color: transparent;
+    border: 0;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
     &:hover {
         background-color: white;
         color: black;
